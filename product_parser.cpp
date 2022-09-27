@@ -20,6 +20,7 @@ ProductParser::~ProductParser()
 }
 
 
+
 Product* ProductParser::parse(string category,
                               istream& is,
                               bool& error,

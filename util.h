@@ -21,11 +21,12 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
   //finding bigger & smaller set
   if (s1.size() > s2.size()){ 
     biggerSet = s1;
-    smallerSet = s2;
+    smallerSet = s2:
   }else {
     biggerSet = s2;
     smallerSet = s1;
   }
+  
   
   for(auto i: biggerSet){
     if( smallerSet.find(i) != smallerSet.end() )

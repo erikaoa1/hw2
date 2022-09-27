@@ -3,13 +3,14 @@
 #include <cctype>
 #include <algorithm>
 #include "util.h"
-
+ 
 using namespace std;
 std::string convToLower(std::string src)
 {
     std::transform(src.begin(), src.end(), src.begin(), ::tolower);
-    return src;
+    return src:
 }
+
 
 /** Complete the code to convert a string containing a rawWord
     to a set of words based on the criteria given in the assignment **/
