@@ -13,7 +13,7 @@ std::set<std::string> Book::keywords() const
 		std::set<std::string> nameWords = parseStringToWords(name_);
 		results.insert(nameWords.begin(), nameWords.end());
 
-		//add authors name as keyword
+		//add authors' name as keyword
 		std::set<std::string> authorWords = parseStringToWords(author_);
 		results.insert(authorWords.begin(), authorWords.end());
 

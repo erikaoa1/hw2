@@ -18,7 +18,7 @@ class Book : public Product
 	Book(std::string category, std::string name, double price, int qty, std::string isbn, std::string author);
 
 
-	//private:
+	private:
     std::string isbn_;
     std::string author_;
 

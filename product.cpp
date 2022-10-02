@@ -13,6 +13,7 @@ Product::Product(const std::string category, const std::string name, double pric
 
 }
 
+
 Product::~Product()
 {
 

@@ -5,10 +5,17 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include "datastore.h"
 #include "product.h"
 #include "db_parser.h"
 #include "product_parser.h"
 #include "util.h"
+#include "mydatastore.h"
+#include "user.h"
+#include "book.h"
+#include "clothing.h"
+#include "movie.h"
+
 
 using namespace std;
 struct ProdNameSorter {
@@ -29,7 +36,7 @@ int main(int argc, char* argv[])
      * Declare your derived DataStore object here replacing
      *  DataStore type to your derived type
      ****************/
-    DataStore ds;
+    MyDataStore ds;
 
 
 
@@ -51,6 +58,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
+
     cout << "=====================================" << endl;
     cout << "Menu: " << endl;
     cout << "  AND term term ...                  " << endl;
@@ -60,6 +68,9 @@ int main(int argc, char* argv[])
     cout << "  BUYCART username                   " << endl;
     cout << "  QUIT new_db_filename               " << endl;
     cout << "====================================" << endl;
+
+		std::string username;
+		unsigned int hit_result_index;
 
     vector<Product*> hits;
     bool done = false;
@@ -77,7 +88,7 @@ int main(int argc, char* argv[])
                     term = convToLower(term);
                     terms.push_back(term);
                 }
-                hits = ds.search(terms, 0);
+                hits = ds.search(terms, 0);								
                 displayProducts(hits);
             }
             else if ( cmd == "OR" ) {
@@ -99,9 +110,27 @@ int main(int argc, char* argv[])
                 }
                 done = true;
             }
-	    /* Add support for other commands here */
+						else if ( cmd == "ADD") {
+							// ADD adal 1
+							ss >> username;
+							ss >> hit_result_index;
+							hit_result_index--;
+							if (hit_result_index < 0  || hit_result_index > hits.size()-1 ){ //checking if valid product index
+								cout << "Invalid Request" << endl;
+							}
+							else {
+								ds.addCart(username, hits[hit_result_index]);
+							}
 
-
+						}
+						else if ( cmd == "VIEWCART"){
+							ss >> username;
+							ds.viewCart(username);
+						}
+						else if (cmd == "BUYCART"){
+							ss >> username;
+							ds.buyCart(username);
+						}
 
 
             else {
