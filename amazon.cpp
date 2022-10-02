@@ -113,6 +113,7 @@ int main(int argc, char* argv[])
 						else if ( cmd == "ADD") {
 							// ADD adal 1
 							ss >> username;
+                            username = convToLower(username);
 							ss >> hit_result_index;
 							hit_result_index--;
 							if (hit_result_index < 0  || hit_result_index > hits.size()-1 ){ //checking if valid product index
@@ -125,10 +126,12 @@ int main(int argc, char* argv[])
 						}
 						else if ( cmd == "VIEWCART"){
 							ss >> username;
+                            username = convToLower(username);
 							ds.viewCart(username);
 						}
 						else if (cmd == "BUYCART"){
 							ss >> username;
+                            username = convToLower(username);
 							ds.buyCart(username);
 						}
 
