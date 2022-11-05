@@ -73,10 +73,11 @@ void MyDataStore::viewCart(std::string username)
 		return;
 	}
 	else{
+		//displaying cart items
 		int cartIndex =1;
 		std::deque<Product*> userCart = cart.find(username)->second;
 		while (!userCart.empty() ){
-		std::cout << "Cart Item Number: " << cartIndex << std::endl;
+		std::cout << "Item " << cartIndex << std::endl;
 		std::cout<<	userCart.front()->displayString() << std::endl;
 		std::cout << std::endl;
 		cartIndex++;
